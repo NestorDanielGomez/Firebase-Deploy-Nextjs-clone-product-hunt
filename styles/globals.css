@@ -1,43 +1,66 @@
+@import "app.css";
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,400&family=Montserrat:wght@400;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --white: #fff;
+  --black: #000;
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --loader-1: #ffffff;
+  --loader-2: #f7f7f7;
+  --loader-border: 1px solid #e8e8e895;
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  --white-05: rgba(255, 255, 255, 0.5);
 
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
+  --color-1: #21293c;
+  --color-2: #21293c;
+  --color-3: #4b587c;
+  --color-4: #f2f2f2;
+  --color-5: #667190;
+  --placeholder-color: #8b9ac3;
 
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  --naranja: #f64900;
+  --rojo: #f00;
+
+  --gris-1: #f5f8ff;
+  --gris-2: #e6e6e6;
+  --gris-3: #999;
+  --gris-4: #666;
+  --gris-5: #333;
+
+  --azul: #2176ff;
+  --verde: rgb(0, 141, 9);
+
+  --border: 1px solid #d9e1ec;
+
+  --shadow: 0 0 1px 1px rgb(33 41 63 / 10%);
+
+  --transition-3s: all 0.3s ease;
+  --transition-5s: all 0.5s ease;
+
+  --font-1: "Libre Baskerville", serif;
+  --font-2: "Montserrat", sans-serif;
+  --font-3: "Montserrat", sans-serif;
+
+  --hue: 223;
+  --bg: hsl(var(--hue), 10%, 90%);
+  --fg: hsl(var(--hue), 10%, 10%);
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+h1,
+h2 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+}
+h3 {
+  font-family: "Montserrat", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -87,11 +110,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
