@@ -2,11 +2,13 @@ import React from "react";
 import styled from "@emotion/styled";
 import Layout from "@/components/layouts/Layout";
 
-export default function Home() {
+export default function Nosotros() {
   return (
-    <Layout>
-      <Heading>Inicio</Heading>
-    </Layout>
+    <>
+      <Layout>
+        <Heading>Nosotros</Heading>
+      </Layout>
+    </>
   );
 }
 
