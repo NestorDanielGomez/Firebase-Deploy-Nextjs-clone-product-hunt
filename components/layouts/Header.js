@@ -49,7 +49,7 @@ const Header = () => {
                 <Boton bgColor="true">Login</Boton>
               </Link>
               <Link href="/crear-cuenta">
-                <Boton>Cerrar Cuenta</Boton>
+                <Boton>Crear Cuenta</Boton>
               </Link>
             </>
           )}
