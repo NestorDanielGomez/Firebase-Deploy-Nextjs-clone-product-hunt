@@ -6,6 +6,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import firebaseConfig from "./config";
 
@@ -13,6 +16,8 @@ class Firebase {
   constructor() {
     const app = initializeApp(firebaseConfig);
     this.auth = getAuth(app);
+    this.db = getFirestore(app);
+    this.storage = getStorage(app);
   }
 
   async registrar(nombre, email, password) {
@@ -28,6 +33,12 @@ class Firebase {
 
   async cerrarSesion() {
     await signOut(this.auth);
+  }
+
+  async subirFotoAStorage(file) {
+    const storageRef = ref(this.storage, "productos/" + file.name);
+    await uploadBytes(storageRef, file);
+    return await getDownloadURL(storageRef);
   }
 }
 
