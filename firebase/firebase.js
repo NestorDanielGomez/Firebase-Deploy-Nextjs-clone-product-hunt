@@ -7,8 +7,9 @@ import {
   signOut,
 } from "firebase/auth";
 import "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import generarId from "@/helper/generarId";
 
 import firebaseConfig from "./config";
 
@@ -37,6 +38,7 @@ class Firebase {
 
   async subirFotoAStorage(file) {
     const storageRef = ref(this.storage, "productos/" + file.name);
+
     await uploadBytes(storageRef, file);
     return await getDownloadURL(storageRef);
   }

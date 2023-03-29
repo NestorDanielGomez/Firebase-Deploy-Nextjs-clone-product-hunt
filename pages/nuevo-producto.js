@@ -27,11 +27,8 @@ const NuevoProducto = () => {
 
   const [error, setError] = useState(false);
 
-  const { valores, errores, handleSubmit, handleChange, handleBlur } = useValidacion(
-    STATE_INICIAL,
-    validarCrearProducto,
-    crearProducto
-  );
+  const { valores, errores, handleSubmit, handleChange, handleBlur, handleChangeImage } =
+    useValidacion(STATE_INICIAL, validarCrearProducto, crearProducto);
 
   const { nombre, empresa, imagen, url, descripcion } = valores;
 
@@ -48,7 +45,7 @@ const NuevoProducto = () => {
       nombre,
       empresa,
       url,
-      urlimagen: await firebase.subirFotoAStorage(URLImage),
+      urlimagen: await firebase.subirFotoAStorage(imagen),
       descripcion,
       votos: 0,
       comentarios: [],
@@ -63,85 +60,13 @@ const NuevoProducto = () => {
     try {
       await addDoc(collection(firebase.db, "productos"), producto);
       alert("Se guardó el producto correctamente!");
+      router.push("/login");
     } catch (error) {
       console.error(error);
     } finally {
       setSubiendo(false);
     }
   }
-
-  const handleImageUpload = (e) => {
-    // Se obtiene referencia de la ubicación donde se guardará la imagen
-    const file = e.target.files[0];
-    const imageRef = ref(firebase.storage, "productos/" + file.name);
-
-    // Se inicia la subida
-    setSubiendo(true);
-    const uploadTask = uploadBytesResumable(imageRef, file);
-
-    // Registra eventos para cuando detecte un cambio en el estado de la subida
-    uploadTask.on(
-      "state_changed",
-      // Muestra progreso de la subida
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`Subiendo imagen: ${progress}% terminado`);
-      },
-      // En caso de error
-      (error) => {
-        setSubiendo(false);
-        console.error(error);
-      },
-      // Subida finalizada correctamente
-      () => {
-        setSubiendo(false);
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log("Imagen disponible en:", url);
-          setURLImage(url);
-        });
-      }
-    );
-  };
-
-  // const onChange = async (e) => {
-  //   const file = e.target.files[0]; // acceder al file subido con el input
-
-  //   // asignar donde se guardara el file
-  //   const storageRef = await firebase.storage.ref("productos");
-
-  //   // asignar el nombre del archivo en el storage de firebase
-  //   const fileRef = storageRef.child(file.name);
-
-  //   await fileRef.put(file); // termina de agregar el archivo
-
-  //   setUrlImagen(await fileRef.getDownloadURL()); // add urlFile al state
-  // };
-
-  const handleUploadStart = () => {
-    guardarProgreso(0);
-    setSubiendo(true);
-  };
-
-  const handleProgress = (progreso) => guardarProgreso({ progreso });
-
-  const handleUploadError = (error) => {
-    setSubiendo(error);
-    console.error(error);
-  };
-
-  const handleUploadSuccess = (nombre) => {
-    guardarProgreso(100);
-    setSubiendo(false);
-    setNombreImagen(nombre);
-    firebase.storage
-      .ref("productos")
-      .child(nombre)
-      .getDownloadURL()
-      .then((url) => {
-        console.log(url);
-        setUrlImagen(url);
-      });
-  };
 
   return (
     <div>
@@ -195,7 +120,7 @@ const NuevoProducto = () => {
                   <label htmlFor="imagen">Imagen</label>
                   <input
                     accept="image/*"
-                    onChange={handleImageUpload}
+                    onChange={handleChangeImage}
                     type="file"
                     id="imagen"
                     name="imagen"

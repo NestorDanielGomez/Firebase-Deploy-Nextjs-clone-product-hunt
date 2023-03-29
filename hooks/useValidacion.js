@@ -31,7 +31,17 @@ const useValidacion = (stateInicial, validar, fn) => {
     setErrores(erroresValidacion);
   };
 
-  return { valores, errores, handleChange, handleSubmit, handleBlur };
+  const handleChangeImage = (e) => {
+    const { name, value } = e.target;
+    if (name === "imagen") {
+      // Validar imagen
+      setValores({ ...valores, [name]: e.target.files[0] });
+    } else {
+      setValores({ ...valores, [name]: value });
+    }
+  };
+
+  return { valores, errores, handleChange, handleSubmit, handleBlur, handleChangeImage };
 };
 
 export default useValidacion;
