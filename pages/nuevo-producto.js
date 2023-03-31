@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { css } from "@emotion/react";
 import Router, { useRouter } from "next/router";
 import Layout from "../components/layouts/Layout";
-import Error404 from "../components/layouts/404";
+import Error404 from "../components/layouts/Error404";
 import { Formulario, Campo, InputSubmit, Error } from "../components/ui/Formulario";
 import { FirebaseContext } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";

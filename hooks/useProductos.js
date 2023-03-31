@@ -30,6 +30,7 @@ const useProductos = (orden) => {
     const unsuscribe = onSnapshot(productosRef, manjejarSnapshot, manjearError);
 
     return () => unsuscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orden]);
 
   return [productos, loadingProductos, errorProductos];

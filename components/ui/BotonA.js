@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const Boton = styled.button`
+const BotonA = styled.a`
   display: block;
   font-weight: 700;
   text-transform: uppercase;
@@ -18,4 +18,4 @@ const Boton = styled.button`
   }
 `;
 
-export default Boton;
+export default BotonA;

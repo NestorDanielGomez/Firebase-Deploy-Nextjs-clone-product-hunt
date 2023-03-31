@@ -8,7 +8,7 @@ const Error404 = () => {
         margin-top: 5rem;
         text-align: center;
       `}>
-      No se puede mostrar
+      No se puede mostrar el producto
     </h1>
   );
 };
