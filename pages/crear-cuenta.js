@@ -56,7 +56,7 @@ const CrearCuenta = () => {
           </Campo>
           {errores.nombre && <Error>{errores.nombre}</Error>}
           <Campo className="">
-            <label htmlFor="email">Nombre</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
@@ -69,7 +69,7 @@ const CrearCuenta = () => {
           </Campo>
           {errores.email && <Error>{errores.email}</Error>}
           <Campo className="">
-            <label htmlFor="password">Nombre</label>
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
               id="password"

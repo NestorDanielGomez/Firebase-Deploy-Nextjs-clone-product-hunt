@@ -23,7 +23,7 @@ const Header = () => {
             align-items: center;
           `}>
           <Link href="/">
-            <Logo>P</Logo>
+            <Logo>NDG</Logo>
           </Link>
 
           <Buscar />
@@ -40,7 +40,13 @@ const Header = () => {
                 css={css`
                   margin-right: 2rem;
                 `}>
-                Hola: {usuario.displayName}
+                Hola:{" "}
+                <strong
+                  css={css`
+                    text-transform: uppercase;
+                  `}>
+                  {usuario.displayName}
+                </strong>
               </p>
               <Boton bgColor="true" onClick={() => firebase.cerrarSesion()}>
                 Cerrar Sesion

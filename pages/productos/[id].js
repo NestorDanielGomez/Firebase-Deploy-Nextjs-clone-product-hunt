@@ -248,7 +248,16 @@ const Producto = () => {
                 {usuario && <Boton onClick={votaProducto}>Votar</Boton>}
               </aside>
             </ContenedorProducto>
-            {puedeBorrar() && <BotonA onClick={eliminarProducto}>Eliminar Producto</BotonA>}
+            {puedeBorrar() && (
+              <BotonA
+                css={css`
+                  margin-top: 2rem;
+                  background-color: var(--gris3);
+                `}
+                onClick={eliminarProducto}>
+                Eliminar Producto
+              </BotonA>
+            )}
           </div>
         )}
       </>
