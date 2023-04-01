@@ -60,7 +60,7 @@ const NuevoProducto = () => {
     try {
       await addDoc(collection(firebase.db, "productos"), producto);
       alert("Se guardó el producto correctamente!");
-      router.push("/login");
+      router.push("/");
     } catch (error) {
       console.error(error);
     } finally {

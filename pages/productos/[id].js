@@ -33,7 +33,7 @@ const Producto = () => {
         const productoQuery = doc(collection(firebase.db, "productos"), id);
         const productoID = await getDoc(productoQuery);
 
-        if (productoID.exists()) {
+        if (productoID.exists) {
           setProducto(productoID.data());
           setConsultarDb(false);
           // setError(false);
@@ -47,7 +47,7 @@ const Producto = () => {
       obtenerProducto();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+  }, [id, consultarDb]);
 
   if (Object.keys(producto).length === 0 && !error) return "Cargando.....";
 
@@ -68,11 +68,12 @@ const Producto = () => {
     if (!usuario) {
       return router.push("/login");
     }
+
     const nuevoTotalVotos = votos + 1;
     // verifico si el usuario actual ha votado
-    if (haVotado.includes(usuario.uid)) {
-      return;
-    }
+
+    if (haVotado.includes(usuario.uid)) return;
+
     // guardo el id del usuario que voto
     const nuevoHanVotado = [...haVotado, usuario.uid];
 
