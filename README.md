@@ -13,7 +13,6 @@ Dependecias utilizadas:[firebase](https://console.firebase.google.com/).
 - Firebase authentication con correo electronico.
 - Firebase Database para almacenar los posteos y comentarios.
 - Firebase Storage para almacenar las imagenes.
-- Babel
 
 <img src=".*/../public/firebaseAuth.png" />
 <img src=".*/../public/firestoreDatabase.png" />
